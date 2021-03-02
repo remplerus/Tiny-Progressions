@@ -95,14 +95,14 @@ public class TinyProgressions{
 		   }).setTabPath("tiny_progression_blocks");
 	
 		
-	public static final DeferredRegister<Item> ITEMS = new DeferredRegister<>(ForgeRegistries.ITEMS, Reference.MOD_ID);
-	public static final DeferredRegister<Block> BLOCKS = new DeferredRegister<>(ForgeRegistries.BLOCKS, Reference.MOD_ID);
-	public static final DeferredRegister<Fluid> FLUIDS = new DeferredRegister<>(ForgeRegistries.FLUIDS,	Reference.MOD_ID);
-	public static final DeferredRegister<SoundEvent> SOUNDS = new DeferredRegister<>(ForgeRegistries.SOUND_EVENTS,	Reference.MOD_ID);
-	public static final DeferredRegister<TileEntityType<?>> TILE_ENTITY_TYPES = new DeferredRegister<>(ForgeRegistries.TILE_ENTITIES, Reference.MOD_ID);
-	public static final DeferredRegister<ContainerType<?>> CONTAINERS = new DeferredRegister<>(ForgeRegistries.CONTAINERS, Reference.MOD_ID);
-	public static final DeferredRegister<Feature<?>> FEATURES = new DeferredRegister<>(ForgeRegistries.FEATURES, Reference.MOD_ID);
-	public static final DeferredRegister<IRecipeSerializer<?>> RECIPEHANDLER = new DeferredRegister<>(ForgeRegistries.RECIPE_SERIALIZERS, Reference.MOD_ID);
+	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Reference.MOD_ID);
+	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Reference.MOD_ID);
+	public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS,	Reference.MOD_ID);
+	public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS,	Reference.MOD_ID);
+	public static final DeferredRegister<TileEntityType<?>> TILE_ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, Reference.MOD_ID);
+	public static final DeferredRegister<ContainerType<?>> CONTAINERS = DeferredRegister.create(ForgeRegistries.CONTAINERS, Reference.MOD_ID);
+	public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, Reference.MOD_ID);
+	public static final DeferredRegister<IRecipeSerializer<?>> RECIPEHANDLER = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, Reference.MOD_ID);
 
 	
     public TinyProgressions() {
@@ -140,11 +140,11 @@ public class TinyProgressions{
     @SuppressWarnings("deprecation")
 	private void doClientStuff(final FMLClientSetupEvent event) {
     	
-    	RenderType solid = RenderType.func_228639_c_();
-    	RenderType cutout_mipped = RenderType.func_228641_d_();
-    	RenderType cutout = RenderType.func_228643_e_();
-    	RenderType translucent = RenderType.func_228645_f_();
-    	RenderType translucent_no_crumbling = RenderType.func_228647_g_();
+    	RenderType solid = RenderType.getSolid();
+    	RenderType cutout_mipped = RenderType.getCutoutMipped();
+    	RenderType cutout = RenderType.getCutout();
+    	RenderType translucent = RenderType.getTranslucent();
+    	RenderType translucent_no_crumbling = RenderType.getTranslucentNoCrumbling();
 
     	RenderTypeLookup.setRenderLayer(TechBlocks.iron_furnace_block.get(),     cutout_mipped);
     	RenderTypeLookup.setRenderLayer(TechBlocks.cobblegen_block.get(),        cutout_mipped);

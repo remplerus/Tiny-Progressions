@@ -35,8 +35,8 @@ public class TileEntityOreDoubler extends AbstractFurnaceTileEntity implements  
 	}
     
     @Override
-    protected int func_214005_h() {
-        return super.func_214005_h() / 4;
+    protected int getCookTime() {
+        return super.getCookTime() / 4;
      }
     
 //    

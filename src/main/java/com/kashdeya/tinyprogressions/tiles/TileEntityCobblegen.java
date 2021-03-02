@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 import com.kashdeya.tinyprogressions.capabilities.InventoryStorage;
 import com.kashdeya.tinyprogressions.inits.ModTileEntityTypes;
 
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
@@ -227,8 +228,8 @@ public class TileEntityCobblegen extends TileEntity implements ITickableTileEnti
 	}
 
 	@Override
-	public void read(@Nonnull CompoundNBT compound) {
-		super.read(compound);
+	public void read(BlockState state, @Nonnull CompoundNBT compound) {
+		super.read(state, compound);
 		this.maxStacksize = compound.getInt("maxStackSize");
 		this.cycleUpdate = compound.getInt("cycleUpdate");
 		this.cycle = compound.getInt("cycle");

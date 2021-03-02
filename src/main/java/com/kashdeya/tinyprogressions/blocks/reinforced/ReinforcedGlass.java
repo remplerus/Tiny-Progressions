@@ -27,7 +27,7 @@ public class ReinforcedGlass extends AbstractGlassBlock implements IOreDictEntry
         		.hardnessAndResistance(20, 2000)
         		.harvestLevel(1)
         		.harvestTool(ToolType.PICKAXE)
-        		.func_226896_b_()
+        		.notSolid()
         		);
 
     }

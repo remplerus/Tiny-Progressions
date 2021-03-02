@@ -12,6 +12,7 @@ import net.minecraft.item.crafting.ShapedRecipe;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.JsonToNBT;
 import net.minecraft.network.PacketBuffer;
+import net.minecraft.util.IItemProvider;
 import net.minecraft.util.JSONUtils;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
@@ -42,9 +43,9 @@ public class RecipeFurnaceNBT extends FurnaceRecipe {
 		      else {
 		      String s1 = JSONUtils.getString(json, "result");
 		      ResourceLocation resourcelocation = new ResourceLocation(s1);
-		      itemstack = new ItemStack(Registry.ITEM.getValue(resourcelocation).orElseThrow(() -> {
-		         return new IllegalStateException("Item: " + s1 + " does not exist");
-		      }));
+
+		      itemstack = new ItemStack((IItemProvider) Registry.ITEM_KEY.getRegistryName());
+
 		      }
 		      if(json.has("resultNBT") && json.get("resultNBT").isJsonObject()) {
 		    	  CompoundNBT tag = new CompoundNBT();

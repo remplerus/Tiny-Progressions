@@ -29,7 +29,7 @@ import net.minecraftforge.fml.common.Mod;
 public class EventDrops {
 	
 	@SubscribeEvent
-	public static void onBlockBreak(BlockEvent.HarvestDropsEvent event) {
+	public static void onBlockBreak(BlockEvent event) {
 		
 		
 		Block target = event.getState().getBlock();
@@ -57,7 +57,7 @@ public class EventDrops {
 			}
 		}
 		
-		if (target == Blocks.DIRT || target == Blocks.GRASS || Tags.Blocks.DIRT.getEntries().contains(target) || target instanceof GrassBlock) {
+		if (target == Blocks.DIRT || target == Blocks.GRASS || Tags.Blocks.DIRT.getAllElements().contains(target) || target instanceof GrassBlock) {
 			if(trigger < ConfigHandler.BoneDropsChance && ConfigHandler.BoneDrops) {
 				ItemEntity item = new ItemEntity((World) event.getWorld(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), new ItemStack(Items.BONE, ConfigHandler.BoneAmount));
 				event.getWorld().addEntity(item);

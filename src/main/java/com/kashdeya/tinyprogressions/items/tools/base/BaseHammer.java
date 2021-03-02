@@ -25,7 +25,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.RayTraceContext;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.util.math.vector.Vector3f;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextFormatting;
@@ -53,8 +54,8 @@ public class BaseHammer extends PickaxeItem {
         if (entityLiving instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) entityLiving;
             
-            Vec3d vec3d = new Vec3d(entityLiving.getPosition().getX(), entityLiving.getPosition().getY() + (double)entityLiving.getEyeHeight(), entityLiving.getPosition().getZ());
-            Vec3d vec3d1 = new Vec3d(pos);
+            Vector3d vec3d = new Vector3d(entityLiving.getPosition().getX(), entityLiving.getPosition().getY() + (double)entityLiving.getEyeHeight(), entityLiving.getPosition().getZ());
+            Vector3d vec3d1 = new Vector3d(new Vector3f(Vector3d.copyCentered(pos)));
             RayTraceResult raytrace =  worldIn.rayTraceBlocks(new RayTraceContext(vec3d, vec3d1, RayTraceContext.BlockMode.COLLIDER, RayTraceContext.FluidMode.NONE, player)); 
             BlockRayTraceResult blockraytraceresult = (BlockRayTraceResult)raytrace;
             
@@ -90,7 +91,7 @@ public class BaseHammer extends PickaxeItem {
                                     
                                     
                                     if(EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, stack) > 0) {
-                                    	worldIn.func_225521_a_(new BlockPos(x, y, z), false, new ItemEntity(worldIn, x, y, z, new ItemStack(state.getBlock().asItem())));
+                                    	worldIn.destroyBlock(new BlockPos(x, y, z), false, new ItemEntity(worldIn, x, y, z, new ItemStack(state.getBlock().asItem())));
                                     }
                                     else {
                                     	worldIn.destroyBlock(new BlockPos(x, y, z), false);
@@ -108,7 +109,7 @@ public class BaseHammer extends PickaxeItem {
 
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-		tooltip.add(new TranslationTextComponent("tooltip.wubhammer_1").setStyle(new Style().setColor(TextFormatting.YELLOW)));
+		tooltip.add(new TranslationTextComponent("tooltip.wubhammer_1").mergeStyle(TextFormatting.YELLOW));
     }
 
 }

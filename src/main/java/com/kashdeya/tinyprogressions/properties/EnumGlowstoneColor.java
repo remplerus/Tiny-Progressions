@@ -37,13 +37,13 @@ public enum EnumGlowstoneColor implements IStringSerializable
 	}
 
 	@Override
-	public String getName()
+	public String getString()
 	{
 		return name;
 	}
 	
 	public static String[] getNames()
 	{
-		return Arrays.stream(EnumGlowstoneColor.values()).map(EnumGlowstoneColor::getName).toArray(String[]::new);
+		return Arrays.stream(EnumGlowstoneColor.values()).map(EnumGlowstoneColor::getString).toArray(String[]::new);
 	}
 }

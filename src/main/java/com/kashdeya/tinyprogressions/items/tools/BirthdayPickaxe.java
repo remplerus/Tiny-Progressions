@@ -1,6 +1,7 @@
 package com.kashdeya.tinyprogressions.items.tools;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.annotation.Nullable;
@@ -11,10 +12,13 @@ import com.kashdeya.tinyprogressions.items.tools.base.BasePickaxe;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.MinecraftGame;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.item.FireworkRocketEntity;
+import net.minecraft.entity.projectile.FireworkRocketEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
@@ -39,8 +43,8 @@ public class BirthdayPickaxe extends BasePickaxe {
 
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-       	tooltip.add(new TranslationTextComponent("tooltip.birthday_1").setStyle(new Style().setColor(TextFormatting.YELLOW)));
-       	tooltip.add(new TranslationTextComponent("tooltip.birthday_2").setStyle(new Style().setColor(TextFormatting.YELLOW)));
+       	tooltip.add(new TranslationTextComponent("tooltip.birthday_1").mergeStyle(TextFormatting.YELLOW));
+       	tooltip.add(new TranslationTextComponent("tooltip.birthday_2").mergeStyle(TextFormatting.YELLOW));
 	}
     
    
@@ -51,8 +55,8 @@ public class BirthdayPickaxe extends BasePickaxe {
 			if (!context.getPlayer().canPlayerEdit(pos, context.getFace(), context.getPlayer().getHeldItem(context.getHand()))) {
 				return ActionResultType.FAIL;
 			} else if (context.getWorld().isAirBlock(pos)) {
-				if (context.getPlayer().getName().getFormattedText().equalsIgnoreCase("dark" + "osto")) {
-					context.getPlayer().sendMessage(new TranslationTextComponent("HAPPY BIRTHDAY DARKOSTO").setStyle(new Style().setColor(TextFormatting.GREEN).setBold(true)));
+				if (context.getPlayer().getName().getUnformattedComponentText().equalsIgnoreCase("dark" + "osto")) {
+					context.getPlayer().sendMessage(new TranslationTextComponent("HAPPY BIRTHDAY DARKOSTO").mergeStyle(TextFormatting.GREEN).mergeStyle(TextFormatting.BOLD), Objects.requireNonNull(Minecraft.getInstance().getMinecraftGame().getCurrentSession()).getSessionId());
 					FireworkRocketEntity firework = new FireworkRocketEntity(context.getWorld(), context.getItem(), context.getPlayer());
 					firework.setPosition(context.getPos().getX(), context.getPos().getY(), context.getPos().getZ());
 					context.getPlayer().world.addEntity(firework);

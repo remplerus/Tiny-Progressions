@@ -31,7 +31,7 @@ public class IronFurnaceBlock extends AbstractFurnaceBlock {
 				.hardnessAndResistance(1, 1000)
 				.harvestLevel(1)
 				.harvestTool(ToolType.PICKAXE)
-				.lightValue(13)
+				//.lightValue(13)
 				.sound(SoundType.STONE));
 		
 		this.cookSpeedInTicks = cookSpeedInTicksIn;

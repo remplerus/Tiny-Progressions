@@ -45,11 +45,11 @@ public class BlockGrowth extends Block {
         super(prop
                 .tickRandomly()
                 .hardnessAndResistance(8, 1000)
-                .lightValue(7)
+                //.lightValue(7)
                 .harvestLevel(1)
                 .harvestTool(ToolType.PICKAXE)
                 .sound(SoundType.METAL)
-                .func_226896_b_());
+                .notSolid());
 
         this.range = rangeX;
         this.rangeY = rangeY;
@@ -83,7 +83,7 @@ public class BlockGrowth extends Block {
     }
 
     @Override
-    public void func_225534_a_(BlockState state, ServerWorld world, BlockPos pos, Random rand) {
+    public void tick(BlockState state, ServerWorld world, BlockPos pos, Random rand) {
         if (this.waterRegion == null)
             makeWaterRegion(world, pos);
         this.growCropsNearby(world, pos, state);
@@ -128,7 +128,7 @@ public class BlockGrowth extends Block {
                     if (cropBlock instanceof IPlantable || cropBlock instanceof IGrowable) {
                         if (!(cropBlock instanceof BlockGrowth)) {
 
-                            cropBlock.func_225534_a_(cropState, world, curPos, RANDOM);
+                            cropBlock.tick(cropState, world, curPos, RANDOM);
                             //Make sure you dont already have a pending block tick
                             if (!world.getPendingBlockTicks().isTickPending(pos, this))
                                 world.getPendingBlockTicks().scheduleTick(pos, this, getGrowthCrystalTickRate(distanceCoefficient));
@@ -230,23 +230,23 @@ public class BlockGrowth extends Block {
     public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         switch (growthLvl) {
             case 1:
-                tooltip.add(new TranslationTextComponent("tooltip.growth_1").setStyle(new Style().setColor(TextFormatting.YELLOW)));
-                tooltip.add(new TranslationTextComponent("tooltip.growth_2", range + 1).setStyle(new Style().setColor(TextFormatting.YELLOW)));
-                tooltip.add(new TranslationTextComponent("tooltip.growth_3", rangeY).setStyle(new Style().setColor(TextFormatting.YELLOW)));
+                tooltip.add(new TranslationTextComponent("tooltip.growth_1").mergeStyle((TextFormatting.YELLOW)));
+                tooltip.add(new TranslationTextComponent("tooltip.growth_2", range + 1).mergeStyle((TextFormatting.YELLOW)));
+                tooltip.add(new TranslationTextComponent("tooltip.growth_3", rangeY).mergeStyle((TextFormatting.YELLOW)));
                 break;
             case 2:
-                tooltip.add(new TranslationTextComponent("tooltip.growthupgrade_1").setStyle(new Style().setColor(TextFormatting.YELLOW)));
-                tooltip.add(new TranslationTextComponent("tooltip.growth_2", range + 1).setStyle(new Style().setColor(TextFormatting.YELLOW)));
-                tooltip.add(new TranslationTextComponent("tooltip.growth_3", rangeY).setStyle(new Style().setColor(TextFormatting.YELLOW)));
-                tooltip.add(new TranslationTextComponent("tooltip.growthupgrade_4").setStyle(new Style().setColor(TextFormatting.YELLOW)));
-                tooltip.add(new TranslationTextComponent("tooltip.growthupgrade_5").setStyle(new Style().setColor(TextFormatting.YELLOW)));
+                tooltip.add(new TranslationTextComponent("tooltip.growthupgrade_1").mergeStyle((TextFormatting.YELLOW)));
+                tooltip.add(new TranslationTextComponent("tooltip.growth_2", range + 1).mergeStyle((TextFormatting.YELLOW)));
+                tooltip.add(new TranslationTextComponent("tooltip.growth_3", rangeY).mergeStyle((TextFormatting.YELLOW)));
+                tooltip.add(new TranslationTextComponent("tooltip.growthupgrade_4").mergeStyle((TextFormatting.YELLOW)));
+                tooltip.add(new TranslationTextComponent("tooltip.growthupgrade_5").mergeStyle((TextFormatting.YELLOW)));
                 break;
             case 3:
-                tooltip.add(new TranslationTextComponent("tooltip.growthupgrade2_1").setStyle(new Style().setColor(TextFormatting.YELLOW)));
-                tooltip.add(new TranslationTextComponent("tooltip.growth_2", range + 1).setStyle(new Style().setColor(TextFormatting.YELLOW)));
-                tooltip.add(new TranslationTextComponent("tooltip.growth_3", rangeY).setStyle(new Style().setColor(TextFormatting.YELLOW)));
-                tooltip.add(new TranslationTextComponent("tooltip.growthupgrade_4").setStyle(new Style().setColor(TextFormatting.YELLOW)));
-                tooltip.add(new TranslationTextComponent("tooltip.growthupgrade_5").setStyle(new Style().setColor(TextFormatting.YELLOW)));
+                tooltip.add(new TranslationTextComponent("tooltip.growthupgrade2_1").mergeStyle((TextFormatting.YELLOW)));
+                tooltip.add(new TranslationTextComponent("tooltip.growth_2", range + 1).mergeStyle((TextFormatting.YELLOW)));
+                tooltip.add(new TranslationTextComponent("tooltip.growth_3", rangeY).mergeStyle((TextFormatting.YELLOW)));
+                tooltip.add(new TranslationTextComponent("tooltip.growthupgrade_4").mergeStyle((TextFormatting.YELLOW)));
+                tooltip.add(new TranslationTextComponent("tooltip.growthupgrade_5").mergeStyle((TextFormatting.YELLOW)));
                 break;
         }
     }

@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.WallTorchBlock;
 import net.minecraft.block.material.Material;
+import net.minecraft.particles.ParticleTypes;
 
 public class WallStoneTorch extends WallTorchBlock implements IOreDictEntry{
 	
@@ -13,12 +14,11 @@ public class WallStoneTorch extends WallTorchBlock implements IOreDictEntry{
     {
 		super(Block.Properties
 				.create(Material.ROCK)
-				.lightValue(14)
+				//.lightValue(14)
 				.doesNotBlockMovement()
 				.hardnessAndResistance(0)
-				.lightValue(14)
 				.sound(SoundType.STONE)
-				.func_226896_b_());
+				.notSolid(), ParticleTypes.FLAME);
     }
 	
 	@Override

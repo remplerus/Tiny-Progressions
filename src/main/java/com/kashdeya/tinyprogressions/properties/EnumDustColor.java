@@ -51,13 +51,13 @@ public enum EnumDustColor implements IStringSerializable
 	}
 
 	@Override
-	public String getName()
+	public String getString()
 	{
 		return name;
 	}
 	
 	public static String[] getNames()
 	{
-		return Arrays.stream(EnumDustColor.values()).map(EnumDustColor::getName).toArray(String[]::new);
+		return Arrays.stream(EnumDustColor.values()).map(EnumDustColor::getString).toArray(String[]::new);
 	}
 }

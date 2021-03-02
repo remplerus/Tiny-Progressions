@@ -3,19 +3,18 @@ package com.kashdeya.tinyprogressions.world;
 import java.util.Random;
 import java.util.function.Function;
 
-import com.mojang.datafixers.Dynamic;
-
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Dynamic;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.material.Material;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
-import net.minecraft.world.IWorld;
+import net.minecraft.world.ISeedReader;
 import net.minecraft.world.LightType;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.ChunkStatus;
 import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.GenerationSettings;
 import net.minecraft.world.gen.feature.BlockStateFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 
@@ -23,22 +22,21 @@ public class QuickSandFeature extends Feature<BlockStateFeatureConfig>  {
 	private static final BlockState AIR = Blocks.CAVE_AIR.getDefaultState();
 	
 	public QuickSandFeature(Function<Dynamic<?>, ? extends BlockStateFeatureConfig> configFactoryIn) {
-		super(configFactoryIn);
+		super((Codec<BlockStateFeatureConfig>) configFactoryIn);
 	}
 
 	@Override
-	   public boolean place(IWorld worldIn, ChunkGenerator<? extends GenerationSettings> generator, Random rand, BlockPos pos, BlockStateFeatureConfig config) {
-		
+		public boolean generate(ISeedReader worldIn, ChunkGenerator generator, Random rand, BlockPos pos, BlockStateFeatureConfig config) {
 	      while(pos.getY() > 5 && worldIn.isAirBlock(pos)) { // && worldIn.getBlockState(pos).getBlock() != Blocks.SAND
-	         pos = pos.func_177977_b();
+	         pos = pos.down();
 	      }
 
 	      if (pos.getY() < 40) {
 	         return false;
 	      } else {
-	         pos = pos.func_177979_c(4);
+	         pos = pos.down(4);
 	         ChunkPos chunkpos = new ChunkPos(pos);
-	         if (!worldIn.getChunk(chunkpos.x, chunkpos.z, ChunkStatus.STRUCTURE_REFERENCES).getStructureReferences(Feature.VILLAGE.getStructureName()).isEmpty()) {
+	         if (!worldIn.getChunk(chunkpos.x, chunkpos.z, ChunkStatus.STRUCTURE_REFERENCES).getStructureReferences().isEmpty()) {
 	            return false;
 	         } else {
 	            boolean[] aboolean = new boolean[2048];
@@ -77,7 +75,7 @@ public class QuickSandFeature extends Feature<BlockStateFeatureConfig>  {
 	                           return false;
 	                        }
 
-	                        if (k < 4 && !material.isSolid() && worldIn.getBlockState(pos.add(k1, k, l2)) != config.field_227270_a_) {
+	                        if (k < 4 && !material.isSolid() && worldIn.getBlockState(pos.add(k1, k, l2)) != config.state) {
 	                           return false;
 	                        }
 	                     }
@@ -89,7 +87,7 @@ public class QuickSandFeature extends Feature<BlockStateFeatureConfig>  {
 	               for(int i3 = 0; i3 < 16; ++i3) {
 	                  for(int i4 = 0; i4 < 8; ++i4) {
 	                     if (aboolean[(l1 * 16 + i3) * 8 + i4]) {
-	                        worldIn.setBlockState(pos.add(l1, i4, i3), i4 >= 4 ? AIR : config.field_227270_a_, 2);
+	                        worldIn.setBlockState(pos.add(l1, i4, i3), i4 >= 4 ? AIR : config.state, 2);
 	                     }
 	                  }
 	               }
@@ -100,9 +98,9 @@ public class QuickSandFeature extends Feature<BlockStateFeatureConfig>  {
 	                  for(int j4 = 4; j4 < 8; ++j4) {
 	                     if (aboolean[(i2 * 16 + j3) * 8 + j4]) {
 	                        BlockPos blockpos = pos.add(i2, j4 - 1, j3);
-	                        if (func_227250_b_(worldIn.getBlockState(blockpos).getBlock()) && worldIn.func_226658_a_(LightType.SKY, pos.add(i2, j4, j3)) > 0) {
-	                           Biome biome = worldIn.func_226691_t_(blockpos);
-	                           if (biome.getSurfaceBuilderConfig().getTop().getBlock() == Blocks.MYCELIUM) {
+	                        if (isDirt(worldIn.getBlockState(blockpos).getBlock()) && worldIn.getLightFor(LightType.SKY, pos.add(i2, j4, j3)) > 0) {
+	                           Biome biome = worldIn.getBiome(blockpos);
+	                           if (biome.getGenerationSettings().getSurfaceBuilderConfig().getTop().getBlock() == Blocks.MYCELIUM) {
 	                              worldIn.setBlockState(blockpos, Blocks.MYCELIUM.getDefaultState(), 2);
 	                           } else {
 	                              worldIn.setBlockState(blockpos, Blocks.GRASS_BLOCK.getDefaultState(), 2);

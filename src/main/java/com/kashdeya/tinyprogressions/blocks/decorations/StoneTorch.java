@@ -5,6 +5,8 @@ import com.kashdeya.tinyprogressions.registry.utils.IOreDictEntry;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.TorchBlock;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.particle.Particle;
+import net.minecraft.particles.ParticleTypes;
 
 public class StoneTorch extends TorchBlock implements IOreDictEntry{
 	
@@ -12,12 +14,11 @@ public class StoneTorch extends TorchBlock implements IOreDictEntry{
     {
 		super(Properties
 				.create(Material.ROCK)
-				.lightValue(14)
+				//.lightValue(14)
 				.doesNotBlockMovement()
 				.hardnessAndResistance(0)
-				.lightValue(14)
 				.sound(SoundType.STONE)
-				.func_226896_b_());
+				.notSolid(), ParticleTypes.FLAME);
     }
 	
 	@Override

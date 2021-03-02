@@ -39,7 +39,7 @@ public class Cobblegen extends StandardBlock{
 	{
 		super(properties
 				.hardnessAndResistance(1.0F, 1000.0F)
-				.lightValue(1)
+				//.lightValue(1)
 				.sound(SoundType.STONE)
 				.harvestTool(ToolType.PICKAXE)
 				.harvestLevel(1));
@@ -47,12 +47,12 @@ public class Cobblegen extends StandardBlock{
 		this.stackSize = stackSize;
 	}
 	
-	@Override
+	//@Override
 	public boolean func_229869_c_(BlockState p_229869_1_, IBlockReader p_229869_2_, BlockPos p_229869_3_) {
 	   return false;
 	}
 
-	@Override
+	//@Override
 	public boolean isNormalCube(BlockState state, IBlockReader worldIn, BlockPos pos) {
       return false;
 	}
@@ -68,7 +68,7 @@ public class Cobblegen extends StandardBlock{
         return BlockRenderType.MODEL;
      }
 
-	@Override	
+	//@Override
 	public ActionResultType func_225533_a_(BlockState p_225533_1_, World worldIn, BlockPos pos, PlayerEntity player, Hand p_225533_5_, BlockRayTraceResult p_225533_6_) {
 
 
@@ -101,7 +101,7 @@ public class Cobblegen extends StandardBlock{
         		ItemStack stack = ttest.getInventory().getStackInSlot(0);
         		
         		if(worldIn.isRemote())
-        			player.sendMessage(new TranslationTextComponent(Blocks.COBBLESTONE.getNameTextComponent().getString() + " x " + (stack.isEmpty()? 0 : stack.getCount())));
+        			player.sendStatusMessage(new TranslationTextComponent(Blocks.COBBLESTONE.getTranslationKey() + " x " + (stack.isEmpty()? 0 : stack.getCount())), false);
     		}
     	}
     	
@@ -137,10 +137,10 @@ public class Cobblegen extends StandardBlock{
     @Override
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-    	tooltip.add(new TranslationTextComponent("tooltip.cobblegen_1", stackSize).setStyle(new Style().setColor(TextFormatting.YELLOW)));
-    	tooltip.add(new TranslationTextComponent("tooltip.cobblegen_2", cycleUpdate).setStyle(new Style().setColor(TextFormatting.YELLOW)));
-    	tooltip.add(new TranslationTextComponent("tooltip.cobblegen_3").setStyle(new Style().setColor(TextFormatting.YELLOW)));
-    	tooltip.add(new TranslationTextComponent("tooltip.cobblegen_4").setStyle(new Style().setColor(TextFormatting.YELLOW)));
+    	tooltip.add(new TranslationTextComponent("tooltip.cobblegen_1", stackSize).mergeStyle((TextFormatting.YELLOW)));
+    	tooltip.add(new TranslationTextComponent("tooltip.cobblegen_2", cycleUpdate).mergeStyle((TextFormatting.YELLOW)));
+    	tooltip.add(new TranslationTextComponent("tooltip.cobblegen_3").mergeStyle((TextFormatting.YELLOW)));
+    	tooltip.add(new TranslationTextComponent("tooltip.cobblegen_4").mergeStyle((TextFormatting.YELLOW)));
     }
 
 }

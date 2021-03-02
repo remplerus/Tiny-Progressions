@@ -50,7 +50,7 @@ public class ReinforcedObsidian extends Block implements IOreDictEntry {
 	@Override
 	public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
     {
-    	tooltip.add(new TranslationTextComponent("tooltip.obsidian_1").setStyle(new Style().setColor(TextFormatting.YELLOW)));
+    	tooltip.add(new TranslationTextComponent("tooltip.obsidian_1").mergeStyle((TextFormatting.YELLOW)));
     }
 
 }

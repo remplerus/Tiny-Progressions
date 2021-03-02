@@ -38,13 +38,13 @@ public enum EnumLampColor implements IStringSerializable
 	}
 
 	@Override
-	public String getName()
+	public String getString()
 	{
 		return name;
 	}
 	
 	public static String[] getNames()
 	{
-		return Arrays.stream(EnumLampColor.values()).map(EnumLampColor::getName).toArray(String[]::new);
+		return Arrays.stream(EnumLampColor.values()).map(EnumLampColor::getString).toArray(String[]::new);
 	}
 }

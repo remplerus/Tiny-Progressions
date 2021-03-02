@@ -13,8 +13,8 @@ public class GlowstoneGlass extends AbstractGlassBlock implements IOreDictEntry
     {
         super(Properties.create(Material.GLASS, MaterialColor.AIR)
         		.hardnessAndResistance(.3F)
-        		.sound(SoundType.GLASS)
-        		.lightValue(1));
+        		.sound(SoundType.GLASS));
+        		//.lightValue(1));
         
     }
     

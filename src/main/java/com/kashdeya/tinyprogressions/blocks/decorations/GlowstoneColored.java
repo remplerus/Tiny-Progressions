@@ -9,8 +9,8 @@ public class GlowstoneColored extends StandardBlock
 	public GlowstoneColored(Properties prop)
 	{
 		super(prop
-				.hardnessAndResistance(0.3F)
-				.lightValue(15));
+				.hardnessAndResistance(0.3F));
+				//.lightValue(15));
 	}
-	
+
 }

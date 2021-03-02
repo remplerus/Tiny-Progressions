@@ -3,6 +3,7 @@ package com.kashdeya.tinyprogressions.gui;
 import com.kashdeya.tinyprogressions.capabilities.InventoryStorage;
 import com.kashdeya.tinyprogressions.container.PouchContainer;
 
+import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
@@ -21,16 +22,16 @@ public class PouchGui extends ContainerScreen<PouchContainer>
 //        this.storage = storage2;
         ySize = 222;
     }
- 
+
     @Override
-    public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY)
+    public void drawGuiContainerBackgroundLayer(MatrixStack matrixStack, float partialTicks, int mouseX, int mouseY)
     {
         Minecraft.getInstance().getTextureManager().bindTexture(texture);
 //        drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
     }
  
     @Override
-    public void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
+    public void drawGuiContainerForegroundLayer(MatrixStack matrixStack, int mouseX, int mouseY)
     {
 //        drawCenteredString(fontRenderer, new TextComponentTranslation("item." + storage.getName()).getFormattedText(), xSize / 2, 5, 0xFFFFFF);
 //        drawString(fontRenderer, new TextComponentTranslation("container.inventory").getFormattedText(), 6, 128, 0xFFFFFF);

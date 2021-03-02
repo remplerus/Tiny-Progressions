@@ -86,18 +86,18 @@ public class TechTools {
 	public static RegistryObject<Item> wub_spade            = TinyProgressions.ITEMS.register("wub_spade",   	 	 () -> new BaseSpade(ItemToolModTier.WUBWUB, 0, 0, new Properties()));
 	
 	//Hoe 12
-	public static RegistryObject<Item> flint_hoe          = TinyProgressions.ITEMS.register("flint_hoe",          () -> new BaseHoe(ItemToolModTier.FLINT, 0, new Properties()));
-	public static RegistryObject<Item> bone_hoe           = TinyProgressions.ITEMS.register("bone_hoe",           () -> new BaseHoe(ItemToolModTier.BONE, 0, new Properties()));
-	public static RegistryObject<Item> emerald_hoe        = TinyProgressions.ITEMS.register("emerald_hoe",        () -> new BaseHoe(ItemToolModTier.EMERALD, 0, new Properties()));
-	public static RegistryObject<Item> obsidian_hoe       = TinyProgressions.ITEMS.register("obsidian_hoe",       () -> new BaseHoe(ItemToolModTier.OBSIDIAN, 0, new Properties()));
-	public static RegistryObject<Item> bsc_iron_hoe       = TinyProgressions.ITEMS.register("bsc_iron_hoe",       () -> new BaseHoe(ItemToolModTier.BSCIRON, 0, new Properties()));
-	public static RegistryObject<Item> bsc_gold_hoe       = TinyProgressions.ITEMS.register("bsc_gold_hoe",       () -> new BaseHoe(ItemToolModTier.BSCGOLD, 0, new Properties()));
-	public static RegistryObject<Item> bsc_diamond_hoe    = TinyProgressions.ITEMS.register("bsc_diamond_hoe",    () -> new BaseHoe(ItemToolModTier.BSCDIAMOND, 0, new Properties()));
-	public static RegistryObject<Item> nether_iron_hoe    = TinyProgressions.ITEMS.register("nether_iron_hoe",    () -> new BaseHoe(ItemTier.IRON,  0, new Properties()));
-	public static RegistryObject<Item> nether_gold_hoe    = TinyProgressions.ITEMS.register("nether_gold_hoe",    () -> new BaseHoe(ItemTier.GOLD, 0, new Properties()));
-	public static RegistryObject<Item> nether_diamond_hoe = TinyProgressions.ITEMS.register("nether_diamond_hoe", () -> new BaseHoe(ItemTier.DIAMOND, 0, new Properties()));
-	public static RegistryObject<Item> nether_hoe         = TinyProgressions.ITEMS.register("nether_hoe",         () -> new BaseHoe(ItemTier.STONE, 0, new Properties()));;
-	public static RegistryObject<Item> wub_hoe 			  = TinyProgressions.ITEMS.register("wub_hoe",            () -> new BaseHoe(ItemToolModTier.WUBWUB, 0, new Properties()));
+	public static RegistryObject<Item> flint_hoe          = TinyProgressions.ITEMS.register("flint_hoe",          () -> new BaseHoe(ItemToolModTier.FLINT, ItemToolModTier.FLINT.getAttackDamage(), 0, new Properties()));
+	public static RegistryObject<Item> bone_hoe           = TinyProgressions.ITEMS.register("bone_hoe",           () -> new BaseHoe(ItemToolModTier.BONE, ItemToolModTier.BONE.getAttackDamage(),0, new Properties()));
+	public static RegistryObject<Item> emerald_hoe        = TinyProgressions.ITEMS.register("emerald_hoe",        () -> new BaseHoe(ItemToolModTier.EMERALD, ItemToolModTier.EMERALD.getAttackDamage(), 0, new Properties()));
+	public static RegistryObject<Item> obsidian_hoe       = TinyProgressions.ITEMS.register("obsidian_hoe",       () -> new BaseHoe(ItemToolModTier.OBSIDIAN, ItemToolModTier.OBSIDIAN.getAttackDamage(), 0, new Properties()));
+	public static RegistryObject<Item> bsc_iron_hoe       = TinyProgressions.ITEMS.register("bsc_iron_hoe",       () -> new BaseHoe(ItemToolModTier.BSCIRON, ItemToolModTier.BSCIRON.getAttackDamage(),0, new Properties()));
+	public static RegistryObject<Item> bsc_gold_hoe       = TinyProgressions.ITEMS.register("bsc_gold_hoe",       () -> new BaseHoe(ItemToolModTier.BSCGOLD, ItemToolModTier.BSCGOLD.getAttackDamage(), 0, new Properties()));
+	public static RegistryObject<Item> bsc_diamond_hoe    = TinyProgressions.ITEMS.register("bsc_diamond_hoe",    () -> new BaseHoe(ItemToolModTier.BSCDIAMOND, ItemToolModTier.BSCDIAMOND.getAttackDamage(), 0, new Properties()));
+	public static RegistryObject<Item> nether_iron_hoe    = TinyProgressions.ITEMS.register("nether_iron_hoe",    () -> new BaseHoe(ItemTier.IRON,  ItemTier.IRON.getAttackDamage(), 0, new Properties()));
+	public static RegistryObject<Item> nether_gold_hoe    = TinyProgressions.ITEMS.register("nether_gold_hoe",    () -> new BaseHoe(ItemTier.GOLD, ItemTier.GOLD.getAttackDamage(), 0, new Properties()));
+	public static RegistryObject<Item> nether_diamond_hoe = TinyProgressions.ITEMS.register("nether_diamond_hoe", () -> new BaseHoe(ItemTier.DIAMOND, ItemTier.DIAMOND.getAttackDamage(), 0, new Properties()));
+	public static RegistryObject<Item> nether_hoe         = TinyProgressions.ITEMS.register("nether_hoe",         () -> new BaseHoe(ItemTier.STONE, ItemTier.STONE.getAttackDamage(), 0, new Properties()));;
+	public static RegistryObject<Item> wub_hoe 			  = TinyProgressions.ITEMS.register("wub_hoe",            () -> new BaseHoe(ItemToolModTier.WUBWUB, ItemToolModTier.WUBWUB.getAttackDamage(), 0, new Properties()));
 	
 	// hammer 1
 //	public static RegistryObject<Item> flint_hammer    =  TinyProgressions.ITEMS.register("flint_hammer",   () -> new BaseHammer(ItemToolModTier.FLINT, 0,0, new Properties()));

@@ -30,11 +30,13 @@ public enum BlockColorEnum implements IStringSerializable {
       this.name = name;
    }
 
-   public String toString() {
+   @Override
+   public String getString() {
       return this.getName();
    }
 
    public String getName() {
       return this.name;
    }
+
 }
